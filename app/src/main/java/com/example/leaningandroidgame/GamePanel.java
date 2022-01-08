@@ -6,7 +6,13 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-
+/**
+ * SurfaceHolder.Callback
+ * A client may implement this interface to receive information about changes to the surface.
+ * When used with a SurfaceView, the Surface being held is only available between calls to
+ * surfaceCreated(android.view.SurfaceHolder) and surfaceDestroyed(android.view.SurfaceHolder).
+ * The Callback is set with SurfaceHolder.addCallback method.
+ */
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -29,16 +35,25 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
 
 
-    //The override method are all part of the surface view class
+    //These methods are same to the default activity run cycle that saad explained
 
-    //TODO research what the Override methods actually do
-
+    /**
+     * This is called immediately after any structural changes (format or size) have been made to the surface
+     * @param holder
+     * @param format
+     * @param width
+     * @param height
+     */
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
 
     }
 
 
+    /**
+     * This is called immediately after the surface is first created.
+     * @param holder
+     */
     @Override
     public void surfaceCreated(SurfaceHolder holder){
           thread = new MainThread(getHolder(),this);
@@ -49,6 +64,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
 
+    /**
+     * This is called immediately before a surface is being destroyed.
+     * @param holder
+     */
     @Override
     public void surfaceDestroyed(SurfaceHolder holder){
         boolean  retry = true;
